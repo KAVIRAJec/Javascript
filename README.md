@@ -11,8 +11,5 @@ cd Javascript
 Usage
 Once you have the game open in your web browser, use the arrow keys on your keyboard to control the snake. The snake will move in the direction of the arrow key you press. The game ends if the snake collides with the walls or its own body.
 
-Demo
-You can play a demo of the game here.
-
 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License
