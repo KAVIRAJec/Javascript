@@ -6,7 +6,7 @@ To play the game, simply download or clone this repository and open the index.ht
 
 ## Installation
 To play the game, simply download or clone this repository and open the index.html file in your web browser.
-```bash
+```bash  copy code
 git clone https://github.com/KAVIRAJec/Javascript.git
 cd Javascript
 ```
