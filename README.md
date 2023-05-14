@@ -6,9 +6,10 @@ To play the game, simply download or clone this repository and open the index.ht
 
 ## Installation
 To play the game, simply download or clone this repository and open the index.html file in your web browser.
-``
+```
 git clone https://github.com/KAVIRAJec/Javascript.git
-cd Javascript``
+cd Javascript
+```
 ## Usage
 Once you have the game open in your web browser, use the arrow keys on your keyboard to control the snake. The snake will move in the direction of the arrow key you press. The game ends if the snake collides with the walls or its own body.
 
