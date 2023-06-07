@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <nav class="controls">
+      <div id="topic"><img src="https://img.icons8.com/arcade/64/000000/timer.png"
+            style="height: 3rem; width: 3rem;margin-left:-200px;" alt=""> <span id="title1">Stop Watch</span></div>
+        <div href="#" class="button" id="start" onClick="stopwatch.start();">Start</div>
+        <div href="#" class="button" id="lap" onClick="stopwatch.lap();">Lap</div>
+        <div href="#" class="button" id="stop" onClick="stopwatch.stop();">Stop</div>
+        <div href="#" class="button" id="reset" onClick="stopwatch.restart();">Reset</div>
+        <div href="#" class="button" id="clearlap" onClick="stopwatch.clear();">Clear Laps</div>
+    </nav>
+    <div class="display1" style="text-align: center">
+      <span id="time"></span>
+</div>
+    <div class="wrapper">
+        <div class="display">
+    <div class="stopwatch"></div></div></div>
+    <ul class="results"></ul>
+</html>
+<script>
+  let date;
+  const options = {
+    year: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  };
+  setInterval(() => {
+    date_var = new Date();
+    
+    //to get the date in the local format
+    date = date_var.toLocaleDateString(undefined, options);
+  
+    //adding everything to the span tag
+    document.getElementById("time").innerHTML =
+      "<br>" + "On " + date;
+  }, 1000);
+  </script>
+
+<script>
+    class Stopwatch {
+    constructor(display, results) {
+        this.running = false;
+        this.display = display;
+        this.results = results;
+        this.laps = [];
+        this.reset();
+        this.print(this.times);
+    }
+    
+    reset() {
+        this.times = [0, 0, 0, 0 ];
+        
+    }
+    
+    start() {
+        if (!this.time) this.time = performance.now();
+        if (!this.running) {
+            this.running = true;
+            requestAnimationFrame(this.step.bind(this));
+        }
+    }
+    
+    lap() {
+        let times = this.times;
+        let li = document.createElement('li');
+        li.innerText = this.format(times);
+        this.results.appendChild(li);
+    }
+    
+    stop() {
+        this.running = false;
+        this.time = null;
+    }
+
+    restart() {
+        this.running = false;
+        this.time = null;
+        this.reset();
+        this.display.innerText = this.format(this.times);
+    }
+    
+    clear() {
+        clearChildren(this.results);
+    }
+    
+    step(timestamp) {
+        if (!this.running) return;
+        this.calculate(timestamp);
+        this.time = timestamp;
+        this.print();
+        requestAnimationFrame(this.step.bind(this));
+    }
+    
+    calculate(timestamp) {
+        var diff = timestamp - this.time;
+        // Hundredths of a second are 100 ms
+        this.times[2] += diff / 10;
+        // Seconds are 100 hundredths of a second
+        if (this.times[2] >= 100) {
+            this.times[1] += 1;
+            this.times[2] -= 100;
+        }
+        // Minutes are 60 seconds
+        if (this.times[1] >= 60) {
+            this.times[0] += 1;
+            this.times[1] -= 60;
+        }
+    }
+    
+    print() {
+        this.display.innerText = this.format(this.times);
+        this.display.html=`display: grid;
+        height:100%;
+        place-items: center;
+        `
+        this.display.style =`color : blue;
+        font-family: Share Tech Mono;
+        `
+    }
+    
+    format(times) {
+        return `\
+${pad0(times[3], 2)} :\
+${pad0(times[0], 2)} :\
+ ${pad0(times[1], 2)} :\
+ ${pad0(Math.floor(times[2]), 2)}`;
+    }
+}
+
+function pad0(value, count) {
+    var result = value.toString();
+    for (; result.length < count; --count)
+        result = '0' + result;
+    return result;
+}
+
+function clearChildren(node) {
+    while (node.lastChild)
+        node.removeChild(node.lastChild);
+}
+
+let stopwatch = new Stopwatch(
+    document.querySelector('.stopwatch'),
+    document.querySelector('.results'));
+</script>

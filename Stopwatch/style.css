@@ -1,0 +1,216 @@
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+}
+#title1{
+  position: absolute;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #020202;
+  font-family: 'Comic Sans MS';
+  
+}
+html {
+  background: #020202;
+  color: #bbb;
+  font-family:  'Comic Sans MS';
+}
+.display1{
+  text-align: center;
+  margin-top: 150px;
+  font-size: 25px;
+  color: white;
+
+}
+.controls {
+  position: fixed;
+  text-align: center;
+  top: 1em;
+  width: 100%;
+  background: white;
+  padding-bottom: 10px;
+}
+
+@font-face {
+    font-family: Digital-7;
+  src: url(Digital-7.ttf);
+}
+@font-face {
+    font-family: Orbitron;
+  src: url(https://fonts.googleapis.com/css?family=Orbitron);
+}
+
+.stopwatch {
+  font-size: 20vw;
+  height: 100%;
+  text-align: center;
+  background: #131419;
+  font-size: 170px;
+}
+
+.results {
+  border-color: lime;
+  list-style: none;
+  margin: 0;
+  margin-left: 600px;
+  margin-right: 700px;
+  padding: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(50%);
+}
+
+.wrapper{
+  height: 200px;
+  width: 700px;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin: 40px 100px 100px 450px;
+  position: relative;
+  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+  border-radius: 10px;
+  cursor: default;
+  animation: animate 1.5s linear infinite;
+}
+.wrapper .display,
+.wrapper span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wrapper .display{
+  z-index: 999;
+  height: 180px;
+  width: 680px;
+  background: #1b1b1b;
+  border-radius: 6px;
+  text-align: center;
+}
+.display .stopwatch{
+  line-height: 180px;
+  color: #fff;
+  font-size: 90px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 1.5s linear infinite;
+}
+@keyframes animate {
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+.wrapper span{
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background: inherit;
+}
+.wrapper span:first-child{
+  filter: blur(7px);
+}
+.wrapper span:last-child{
+  filter: blur(20px);
+}
+.button {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 55px;
+  padding: 10px 15px;
+  font-family: Comic Sans MS;
+  font-weight: 1000;
+  font-size: 25px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  text-align: center;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.button:hover {
+  color: #1b5c7e;
+  background: #46f5f8;
+  box-shadow: 0 0 10px #29d3d6, 0 0 40px #29d3d6, 0 0 80px #29d3d6;
+  transition-delay: 0.001s;
+  cursor: pointer;
+}
+
+.button:active {
+  letter-spacing: 2px;
+}
+
+.button:focus {
+  outline: none;
+}
+#start {
+  color:hsl(298, 100%, 57%);
+} 
+
+#start:hover {
+  color: white;
+  background: hsl(298, 100%, 57%);
+  box-shadow: 0 0 20px hsl(298, 72%, 72%), 0 0 40px hsl(0, 14%, 89%), 0 0 80px hsl(295, 90%, 61%);
+  transition-delay: 0.001s;
+  font-size: large;
+}
+
+#reset {
+  color: hwb(238 4% 11%);
+}
+
+#reset:hover {
+  color: white;
+  background: hwb(238 4% 11%);
+  box-shadow: 0 0 20px hsl(238, 87%, 47%), 0 0 40px hsl(0, 14%, 89%), 0 0 80px hsl(234, 100%, 40%);
+  transition-delay: 0.001s;
+  font-size: large;
+}
+
+#stop {
+  color: hwb(188 38% 8%);
+}
+
+#stop:hover {
+  color: white;
+  background: hwb(188 38% 8%);
+  box-shadow: 0 0 20px hsl(201, 97%, 54%), 0 0 40px hsl(202, 14%, 89%), 0 0 80px hsl(193, 80%, 35%);
+  transition-delay: 0.001s;
+  font-size: large;
+}
+
+#lap {
+  color: hwb(32 6% 5%);
+}
+
+#lap:hover {
+  color: white;
+  background: hwb(32 6% 5%);
+  box-shadow: 0 0 10px rgb(255, 118, 63), 0 0 40px rgb(255, 106, 103), 0 0 80px rgb(255, 137, 104);
+  transition-delay: 0.001s;
+  font-size: large;
+}
+
+#clearlap {
+  color: rgb(255, 89, 38);
+}
+
+#clearlap:hover {
+  color: white;
+  background: rgb(255, 89, 38);
+  box-shadow: 0 0 10px rgb(255, 118, 63), 0 0 40px rgb(255, 106, 103), 0 0 80px rgb(255, 137, 104);
+  transition-delay: 0.001s;
+  font-size: large;
+}
+
+</style>
